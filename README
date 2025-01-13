@@ -1,4 +1,18 @@
 # Simple chess
+## Requirements:
+1. User enter piece name and position. Example : KING, B4.
+2. Our task is to find and print all possible places the piece can go from there.
+
+## Design thoughts
+1. How does application receive input ? --> as command line argument. User can send multiple such request one by one, and our job is to print all the possible places it can go
+2. So we would like to first parse the user input, for which we want an INPUT PARSER. Its job will be to read user input and produce output. We want output which PIECE and POSITION was given as input.
+    We can create INPUT PARSER Interface and create a parse() method.
+    We need to create PIECE abstract class. We can then extend it to each of the different pices like KING, QUEEN, PAWN etc. Each having some important data members like directions.
+    Each piece class will also have method called moves() which will return the allowed moves. We can think of creating an interface called Moveable with allowedMoves().
+    We also need to create a Position which will contain the row and col. User input needs to be transformed into position.
+    So basically we need to create two transformers, one for PIECE, and another for POSITION
+3. Lastly we will use availableMoves() method on piece object to find the moves.
 
 ## Setup Instruction
-1. JDK 21
+1. install JDK 21
+2. Open the project in IntelliJ and under Project setting use JDK21.
