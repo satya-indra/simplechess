@@ -1,7 +1,9 @@
 package org.example.input;
 
+import java.util.Optional;
+
 public interface InputParser {
-    UserInput parse(String input);
+    Optional<UserInput> parse(String input);
 
     default boolean inputPatternMatcher(String input, String pattern) {
         if (input == null || input.isBlank()) {
