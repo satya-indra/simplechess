@@ -8,4 +8,5 @@ import java.util.Optional;
 public interface Transformer {
     Optional<PIECE_TYPE> toPieceType(String pieceName);
     Optional<Position> toPosition(String positionName);
+    Optional<String> toString(Position position);
 }

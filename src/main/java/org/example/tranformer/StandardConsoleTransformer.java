@@ -43,6 +43,27 @@ public class StandardConsoleTransformer implements Transformer {
 
     }
 
+    @Override
+    public Optional<String> toString(Position position) {
+        if (position == null) {
+            return Optional.empty();
+        }
+
+        int row = position.row();
+        int col = position.col();
+
+        if (!isRowValid(row) || !isColumnValid(col)) {
+            System.out.println("Invalid position object.");
+            return Optional.empty();
+        }
+
+        char colChar = (char) ('A' + col - 1); // Convert column number to letter
+        String positionName = String.valueOf(colChar) + row; // Combine column letter and row number
+
+        return Optional.of(positionName);
+
+    }
+
     private boolean isColumnValid(int col) {
         return isPositionIndexValid(col);
     }
