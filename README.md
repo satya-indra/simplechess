@@ -11,6 +11,7 @@ The application allows players to input a chess piece and its position, then cal
 ## Setup Instructions
 - Clone the Repository 
   - git clone https://github.com/satya-indra/simplechess.git
+  - use master branch
   - cd <project-folder>
 - Install and verify JDK 21. Above 17 is also fine. Update 17 in pom.xml in that case.
   - java --version
