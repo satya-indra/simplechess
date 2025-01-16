@@ -1,12 +1,11 @@
-package org.example.tranformer;
+package org.example.utils;
 
 import org.example.board.Position;
 import org.example.piece.PIECE_TYPE;
-import org.example.utils.StringUtils;
 
 import java.util.Optional;
 
-public class StandardConsoleTransformer implements Transformer {
+public class StandardConsoleChessUtils implements ChessUtils {
     @Override
     public Optional<PIECE_TYPE> toPieceType(String pieceName) {
 
@@ -23,7 +22,8 @@ public class StandardConsoleTransformer implements Transformer {
     public Optional<Position> toPosition(String positionName) {
 
         if (StringUtils.isBlank(positionName) || positionName.trim().length() != 2) {
-            throw new IllegalArgumentException("Invalid position format.");
+            System.out.println("Blank OR Invalid position input.");
+            return Optional.empty();
         }
 
         String trimmedPos = positionName.trim();
@@ -34,7 +34,7 @@ public class StandardConsoleTransformer implements Transformer {
         int col = colChar - 'A' + 1;
         int row = rowChar - '0';
 
-        if (!isRowValid(row) || !isColumnValid(col)) {
+        if (isRowValid(row) || isColumnValid(col)) {
             System.out.println("Invalid position input.");
             return Optional.empty();
         }
@@ -52,7 +52,7 @@ public class StandardConsoleTransformer implements Transformer {
         int row = position.row();
         int col = position.col();
 
-        if (!isRowValid(row) || !isColumnValid(col)) {
+        if (isRowValid(row) || isColumnValid(col)) {
             System.out.println("Invalid position object.");
             return Optional.empty();
         }
@@ -73,7 +73,7 @@ public class StandardConsoleTransformer implements Transformer {
     }
 
     private static boolean isPositionIndexValid(int pos) {
-        return pos > 0 && pos < 9;
+        return pos <= 0 || pos >= 9;
     }
 
 }

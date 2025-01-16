@@ -7,9 +7,9 @@ import org.example.input.InputValidator;
 import org.example.input.impl.StandardConsoleInputValidator;
 
 public class BoardFactory {
-    public static Board getBoard() {
-        switch (Constants.APP_TYPE.toLowerCase()) {
-            case "console":
+    public static Board getBoard(String appType) {
+        switch (appType) {
+            case Constants.CONSOLE_APP:
                 return new EmptyBoard();
             default:
                 throw new IllegalArgumentException("Unknown app type");

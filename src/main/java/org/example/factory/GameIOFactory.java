@@ -1,14 +1,15 @@
 package org.example.factory;
 
 import org.example.constants.Constants;
-import org.example.dto.StandardConsoleUserInput;
-import org.example.dto.UserInput;
+import org.example.io.GameIO;
+import org.example.io.StandardConsoleIO;
 
-public class UserInputFactory {
-    public static UserInput getInputInstance(String appType) {
+public class GameIOFactory {
+
+    public static GameIO getInstance(String appType) {
         switch (appType) {
             case Constants.CONSOLE_APP:
-                return new StandardConsoleUserInput();
+                return new StandardConsoleIO();
             default:
                 throw new IllegalArgumentException("Unknown app type");
         }

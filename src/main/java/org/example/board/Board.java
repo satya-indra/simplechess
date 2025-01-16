@@ -5,10 +5,9 @@ import org.example.piece.Piece;
 import java.util.List;
 
 public interface Board {
-    void initialize();
     void reset();
 
-    public void displayBoard();
+    void displayBoard();
 
-    public void addAvailableMoves(List<Position> availableMoves, Piece piece);
+    void addAvailableMoves(List<Position> availableMoves, Piece piece);
 }

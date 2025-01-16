@@ -1,5 +1,6 @@
 package org.example.input.impl;
 
+import org.example.constants.Constants;
 import org.example.input.InputParser;
 import org.example.dto.UserInput;
 import org.example.factory.InputValidatorFactory;
@@ -19,6 +20,6 @@ public class StandardConsoleInputParser implements InputParser {
             return Optional.empty();
         }
 
-        return InputValidatorFactory.getValidator().validate(input);
+        return InputValidatorFactory.getValidator(Constants.APP_TYPE).validate(input);
     }
 }

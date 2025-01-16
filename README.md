@@ -4,50 +4,34 @@ This is a simple console-based chess game simulation built with Java 21.
 The application allows players to input a chess piece and its position, then calculates the possible moves based on the piece type and current position.
 
 ## Requirements
-- Java Development Kit (JDK) 21
+- Java Development Kit (JDK) 21/17
 - A terminal or IDE to run the program (e.g., IntelliJ IDEA, Eclipse, or VS Code)
 - Maven (optional, if you want to build the project)
 
 ## Setup Instructions
 - Clone the Repository 
-  - git clone <repository-url>
+  - git clone https://github.com/satya-indra/simplechess.git
   - cd <project-folder>
-- Verify JDK Installation
+- Install and verify JDK 21. Above 17 is also fine. Update 17 in pom.xml in that case.
   - java --version
   - output : 
     - openjdk 21 2023-09-19 
     - OpenJDK Runtime Environment ...
+- Make sure to select JDK21 in Project Structure
+  - ![img_1.png](img_1.png)
+  - ![img_2.png](img_2.png)
 - Compile and Run the Program using IDE
   - Go to ChessApplication and click on Play next to class name.
+  - ![img.png](img.png)
 
 
 ## Requirements:
 1. User enter piece name and position. Example : KING, B4.
 2. Our task is to find and print all possible places the piece can go from there.
 
-## Design Principles
+## Output
 
-### 1. **Single Responsibility Principle (SRP)**
-Each class is designed to handle a specific responsibility:
-- `Board`: Manages the state and logic related to the chessboard.
-- `Piece`: Represents a chess piece and its movement rules.
-- `Game`: Abstract class defining the structure of the game.
-- `GameIO`: Handles input and output for different game modes.
-- `InputParser`: Validates and parses user input.
-
-### 2. **Open/Closed Principle (OCP)**
-The design supports extending functionality (e.g., adding a new game mode or piece) without modifying existing classes.
-
-### 3. **Liskov Substitution Principle (LSP)**
-Derived classes (e.g., `ConsoleGame`, `WebGame`) can replace their base types (`Game`) without breaking the application.
-
-### 4. **Interface Segregation Principle (ISP)**
-Interfaces like `GameIO` and `InputParser` define specific contracts, ensuring that implementing classes are not burdened with unused methods.
-
-### 5. **Dependency Inversion Principle (DIP)**
-High-level modules (e.g., `Game`) depend on abstractions (`GameIO`, `InputParser`) rather than concrete implementations.
-
----
+![img_3.png](img_3.png)
 
 ## Components
 

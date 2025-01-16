@@ -1,6 +1,7 @@
 package org.example.input.impl;
 
 import org.example.board.Position;
+import org.example.constants.Constants;
 import org.example.input.InputValidator;
 import org.example.dto.UserInput;
 import org.example.factory.UserInputFactory;
@@ -18,19 +19,19 @@ public class StandardConsoleInputValidator implements InputValidator {
         String piece = splitInput[0];
         String pos = splitInput[1];
 
-        Optional<PIECE_TYPE> pieceTypeOptional = TransformerFactory.getTransformer().toPieceType(piece);
+        Optional<PIECE_TYPE> pieceTypeOptional = TransformerFactory.getTransformer(Constants.APP_TYPE).toPieceType(piece);
         if (pieceTypeOptional.isEmpty()) {
             System.out.println("Invalid piece name input. Correct input example: king, b4");
             return Optional.empty();
         }
 
-        Optional<Position> positionOptional = TransformerFactory.getTransformer().toPosition(pos);
+        Optional<Position> positionOptional = TransformerFactory.getTransformer(Constants.APP_TYPE).toPosition(pos);
         if (positionOptional.isEmpty()) {
             System.out.println("Invalid position input. Correct input example: king, b4");
             return Optional.empty();
         }
 
-        UserInput userInput = UserInputFactory.getInputInstance();
+        UserInput userInput = UserInputFactory.getInputInstance(Constants.APP_TYPE);
 
         userInput.setPiece(pieceTypeOptional.get());
         userInput.setPosition(positionOptional.get());

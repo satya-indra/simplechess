@@ -7,12 +7,6 @@ import java.util.List;
 
 public class EmptyBoard extends AbstractBoard {
 
-    @Override
-    public void initialize() {
-        super.reset();
-    }
-
-
     public void addAvailableMoves(List<Position> availableMoves, Piece piece) {
 
         // Mark all available moves on the board
