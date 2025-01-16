@@ -1,4 +1,4 @@
-package org.example.input.factory;
+package org.example.factory;
 
 import org.example.constants.Constants;
 import org.example.input.InputParser;

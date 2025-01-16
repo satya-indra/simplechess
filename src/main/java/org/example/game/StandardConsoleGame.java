@@ -1,27 +1,26 @@
 package org.example.game;
 
 import org.example.board.Board;
-import org.example.board.EmptyBoard;
 import org.example.board.Position;
 import org.example.input.InputParser;
-import org.example.input.UserInput;
-import org.example.input.factory.InputParserFactory;
+import org.example.dto.UserInput;
+import org.example.factory.InputParserFactory;
 import org.example.io.GameIO;
 import org.example.piece.Piece;
-import org.example.piece.PieceFactory;
-import org.example.tranformer.TransformerFactory;
+import org.example.factory.PieceFactory;
+import org.example.factory.TransformerFactory;
 
 import java.util.List;
 import java.util.Optional;
 
-public class SimpleConsoleGame extends Game {
+public class StandardConsoleGame extends AbstractGame {
 
-    public SimpleConsoleGame(Board board, GameIO gameIO) {
+    public StandardConsoleGame(Board board, GameIO gameIO) {
         this.board = board;
         this.gameIO = gameIO;
     }
 
-    public Board play() {
+    public void play() {
 
         while (true) {
             gameIO.writeOutput("Welcome to the game");
@@ -42,19 +41,20 @@ public class SimpleConsoleGame extends Game {
             Optional<UserInput> userInput = parser.parse(consoleInput);
 
             if (userInput.isEmpty()) {
+                gameIO.writeOutput("No Input found.");
                 continue;
             }
 
-            Piece piece = PieceFactory.getPiece(userInput.get().piece());
+            Piece piece = PieceFactory.getPiece(userInput.get().getPiece());
 
-            List<Position> availableMoves = piece.getAvailableMoves(userInput.get().position());
+            List<Position> availableMoves = piece.getAvailableMoves(userInput.get().getPosition());
 
             board.addAvailableMoves(availableMoves, piece);
 
             board.displayBoard();
 
             if (availableMoves.isEmpty()) {
-                System.out.println("No moves found");
+                gameIO.writeOutput("No moves found");
             }
 
             availableMoves.forEach(pos -> System.out.print(TransformerFactory.getTransformer().toString(pos).get() + ", "));
@@ -63,8 +63,6 @@ public class SimpleConsoleGame extends Game {
 
         }
 
-
-        return board;
 
     }
 

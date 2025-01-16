@@ -1,8 +1,9 @@
-package org.example.piece;
+package org.example.factory;
 
 import org.example.constants.Constants;
 import org.example.input.InputValidator;
 import org.example.input.impl.StandardConsoleInputValidator;
+import org.example.piece.*;
 
 import java.util.Arrays;
 

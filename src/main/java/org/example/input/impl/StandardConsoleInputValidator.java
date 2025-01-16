@@ -2,9 +2,10 @@ package org.example.input.impl;
 
 import org.example.board.Position;
 import org.example.input.InputValidator;
-import org.example.input.UserInput;
+import org.example.dto.UserInput;
+import org.example.factory.UserInputFactory;
 import org.example.piece.PIECE_TYPE;
-import org.example.tranformer.TransformerFactory;
+import org.example.factory.TransformerFactory;
 
 import java.util.Optional;
 
@@ -29,6 +30,12 @@ public class StandardConsoleInputValidator implements InputValidator {
             return Optional.empty();
         }
 
-        return Optional.of(new UserInput(pieceTypeOptional.get(), positionOptional.get()));
+        UserInput userInput = UserInputFactory.getInputInstance();
+
+        userInput.setPiece(pieceTypeOptional.get());
+        userInput.setPosition(positionOptional.get());
+
+
+        return Optional.of(userInput);
     }
 }

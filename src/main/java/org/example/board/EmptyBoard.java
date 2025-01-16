@@ -13,29 +13,16 @@ public class EmptyBoard extends AbstractBoard {
     }
 
 
-    /**
-     * Adds the available moves for a given piece to the board.
-     *
-     * @param piece    The chess piece.
-     * @param position The current position of the piece.
-     */
     public void addAvailableMoves(List<Position> availableMoves, Piece piece) {
-
-        // Mark the piece's current position
-//        board[position.row()][position.col()] = 'P';
 
         // Mark all available moves on the board
         for (Position move : availableMoves) {
             board[move.row() - 1][move.col() - 1] = piece;
         }
+
     }
 
-    /**
-     * Displays the current state of the board in a grid format with row and column labels.
-     */
-    /**
-     * Displays the current state of the board in a grid format with proper alignment.
-     */
+
     public void displayBoard() {
         // Print column headers
         System.out.print("   ");

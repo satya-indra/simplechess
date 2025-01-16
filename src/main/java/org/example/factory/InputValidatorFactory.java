@@ -1,19 +1,16 @@
-package org.example.board.factory;
+package org.example.factory;
 
-import org.example.board.Board;
-import org.example.board.EmptyBoard;
 import org.example.constants.Constants;
 import org.example.input.InputValidator;
 import org.example.input.impl.StandardConsoleInputValidator;
 
-public class BoardFactory {
-    public static Board getBoard() {
+public class InputValidatorFactory {
+    public static InputValidator getValidator() {
         switch (Constants.APP_TYPE.toLowerCase()) {
             case "console":
-                return new EmptyBoard();
+                return new StandardConsoleInputValidator();
             default:
                 throw new IllegalArgumentException("Unknown app type");
         }
     }
-
 }

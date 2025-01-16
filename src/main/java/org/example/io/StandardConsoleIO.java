@@ -2,7 +2,7 @@ package org.example.io;
 
 import java.util.Scanner;
 
-public class ConsoleIO implements GameIO {
+public class StandardConsoleIO implements GameIO {
     private final Scanner scanner = new Scanner(System.in);
 
     @Override

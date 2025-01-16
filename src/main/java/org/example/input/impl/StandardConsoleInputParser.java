@@ -1,13 +1,14 @@
 package org.example.input.impl;
 
 import org.example.input.InputParser;
-import org.example.input.UserInput;
-import org.example.input.factory.InputValidatorFactory;
+import org.example.dto.UserInput;
+import org.example.factory.InputValidatorFactory;
 
 import java.util.Optional;
 
 public class StandardConsoleInputParser implements InputParser {
     private static final String INPUT_PATTERN = "^(?i)[a-z]+,\\s*[a-h][1-8]$";
+
     @Override
     public Optional<UserInput> parse(String input) {
 
